@@ -1,7 +1,7 @@
 FROM python:latest
 
 # Installing dependencies for running a python application
-RUN apt-get update && apt-get install -y pipx
+RUN apt-get update && apt-get install -y pipx docker-compose docker.io
 RUN pipx ensurepath
 
 # Install poetry
@@ -17,7 +17,7 @@ RUN pipx run poetry install --no-root
 # Copying our application into the container
 COPY todo todo
 
-# **Copy the tests directory into the container**
+# Copy the tests directory into the container
 COPY tests tests
 
 ENV PATH="/root/.local/bin:${PATH}"
